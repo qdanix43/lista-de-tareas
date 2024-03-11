@@ -1,5 +1,6 @@
 package com.example.listadetareas.activities // Declara el paquete al que pertenece la clase AddTaskActivity
 
+import Task
 import android.annotation.SuppressLint // Importa la anotación SuppressLint para controlar advertencias específicas del código
 import android.content.Intent // Importa la clase Intent para iniciar nuevas actividades o servicios
 import androidx.appcompat.app.AppCompatActivity // Importa la clase base AppCompatActivity para actividades de la biblioteca de compatibilidad
@@ -7,7 +8,6 @@ import android.os.Bundle // Importa la clase Bundle para pasar datos entre activ
 import android.widget.Button // Importa la clase Button para manejar botones en la interfaz de usuario
 import android.widget.EditText // Importa la clase EditText para manejar campos de entrada de texto en la interfaz de usuario
 import com.example.listadetareas.R // Importa el archivo de recursos R, que contiene referencias a los recursos de la aplicación
-import com.example.listadetareas.models.Task // Importa la clase Task del paquete de modelos
 
 class AddTaskActivity : AppCompatActivity() { // Define la clase AddTaskActivity que extiende AppCompatActivity
 
@@ -26,6 +26,7 @@ class AddTaskActivity : AppCompatActivity() { // Define la clase AddTaskActivity
             val taskName = taskEditText.text.toString() // Obtiene el nombre de la tarea ingresado en el campo de texto
             if (taskName.isNotBlank()) { // Verifica si el nombre de la tarea no está en blanco
                 // Aquí se puede agregar la lógica para crear una nueva tarea y agregarla a la base de datos o lista de tareas
+                val task = Task(-1, taskName, false)
             }
         }
     }

@@ -1,7 +1,8 @@
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Task(val id: Int, val name: String, var isCompleted: Boolean) : Parcelable {
+data class Task(var id: Int, val name: String, var isCompleted: Boolean) : Parcelable {
+
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString() ?: "",
@@ -18,6 +19,11 @@ data class Task(val id: Int, val name: String, var isCompleted: Boolean) : Parce
     }
 
     companion object CREATOR : Parcelable.Creator<Task> {
+        val TABLE_NAME: String = "Task"
+        val _ID: String = "id"
+        val COLUMN_COMPLETED: String = "completed"
+        val COLUMN_NAME: String = "name"
+
         override fun createFromParcel(parcel: Parcel): Task {
             return Task(parcel)
         }
@@ -29,3 +35,4 @@ data class Task(val id: Int, val name: String, var isCompleted: Boolean) : Parce
 }
 
 const val ADD_TASK_REQUEST = 1
+
